@@ -1,16 +1,17 @@
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Person {
+public class Person implements Serializable {
     private String name;
 
-    Scanner scanner = new Scanner(System.in);
+    transient Scanner scanner = new Scanner(System.in);
     DataBase db = new DataBase();
 
     public Person(String name) {
         this.name = name;
     }
-    // test git
+
     public void removeTask(){ //удаляет задачу по id
         while (true) {
             try {
@@ -167,6 +168,26 @@ public class Person {
 
             } catch (InputMismatchException e) {
                 System.out.println("Ошибка ввода. Пожалуйста, введите числовой ID.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public void checFullTask() { //просмотр полной задачи
+        while (true) {
+            try {
+                System.out.println("Введите id задачи для просмотра");
+                System.out.println("0 - выход");
+                int searchId = scanner.nextInt();
+
+                Task t1 = db.searchTaskById(searchId);
+                System.out.println("Название:" + t1.getName() + " Описание: " + t1.getDescription() + " Статус: " + t1.getStatus());
+
+                if(searchId == 0)
+                    break;
+
+            } catch (InputMismatchException e) {
+                System.out.println("Неверный ввод");
                 scanner.nextLine();
             }
         }

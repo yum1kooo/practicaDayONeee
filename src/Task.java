@@ -1,11 +1,12 @@
+import java.io.Serializable;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Task {
+public class Task implements Serializable {
     private String name;
     private String description;
     private String status;
-    Scanner scanner = new Scanner(System.in);
+    transient Scanner scanner = new Scanner(System.in);
 
 
     public Task(String name, String description, String status) {

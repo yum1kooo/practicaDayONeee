@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DataBase {
-    private static LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
+public class DataBase implements Serializable {
+    private LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
 
     public void getAllTask(){ // краткое описание задачи с ее номером
             for(Map.Entry<Integer, Task> allTask : taskDB.entrySet()){
