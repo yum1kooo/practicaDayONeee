@@ -3,7 +3,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DataBase implements Serializable {
-    private LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
+    transient private static LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
 
     public void getAllTask(){ // краткое описание задачи с ее номером
             for(Map.Entry<Integer, Task> allTask : taskDB.entrySet()){

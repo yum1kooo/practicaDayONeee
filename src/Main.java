@@ -47,6 +47,7 @@ public class Main implements Serializable {
                 }
                 case "6" -> {
                     person.checFullTask();
+                    break;
                 }
                 case "7" -> {
                     person.removeTask();

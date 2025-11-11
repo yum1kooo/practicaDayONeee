@@ -56,14 +56,14 @@ public class Person implements Serializable {
     public void changeTaskName() {  // Меняет название задачи
         while (true) {
             try {
-                System.out.println("Введите id задачи который вы хотите поменять!");
+                System.out.println("Введите id задачи который вы хотите поменять имя!");
                 System.out.println("0 - для выхода");
                 int id = scanner.nextInt();
                 scanner.nextLine();
 
                 Task t1 = db.searchTaskById(id);
 
-                    if(scanner.hasNextInt(0)){
+                    if(id == 0){
                       return;
                     }
                 if (t1 == null) {
@@ -72,6 +72,7 @@ public class Person implements Serializable {
                     System.out.println("Введите новое имя задачи");
                     String changName = scanner.nextLine();
                     t1.setName(changName);
+                    System.out.println("Новое имя задачи " + t1.getName());
                     return;
                 }
             } catch (InputMismatchException e) {
@@ -84,14 +85,14 @@ public class Person implements Serializable {
         public void changeTaskDescription() { // меняем описание задачи
             while (true) {
                 try {
-                    System.out.println("Введите id задачи который вы хотите поменять!");
+                    System.out.println("Введите id задачи который вы хотите поменять описание!");
                     System.out.println("0 - для выхода");
                     int id = scanner.nextInt();
                     scanner.nextLine();
 
                     Task t1 = db.searchTaskById(id);
 
-                    if(scanner.hasNextInt(0)){
+                    if(id == 0){
                         return;
                     }
                     if (t1 == null) {
@@ -100,6 +101,7 @@ public class Person implements Serializable {
                         System.out.println("Введите новое описание задачи");
                         String changDescription = scanner.nextLine();
                         t1.setDescription(changDescription);
+                        System.out.println("Новое описание задачи " + t1.getDescription());
                         return;
                     }
                 } catch (InputMismatchException e) {
@@ -112,14 +114,14 @@ public class Person implements Serializable {
         public void changeTaskStatus(){ // меняем статус задачи
             while (true) {
                 try {
-                    System.out.println("Введите id задачи который вы хотите поменять!");
+                    System.out.println("Введите id задачи которой вы хотите поменять статус!");
                     System.out.println("0 - для выхода");
                     int id = scanner.nextInt();
                     scanner.nextLine();
 
                     Task t1 = db.searchTaskById(id);
 
-                    if(scanner.hasNextInt(0)){
+                    if(id == 0){
                         return;
                     }
                     if (t1 == null) {
@@ -127,7 +129,8 @@ public class Person implements Serializable {
                     } else {
                         System.out.println("Введите новый статус задачи");
                         String changStatus = scanner.nextLine();
-                        t1.setName(changStatus);
+                        t1.setStatus(changStatus);
+                        System.out.println("Новое статус задачи" + t1.getStatus());
                         return;
                     }
                 } catch (InputMismatchException e) {
