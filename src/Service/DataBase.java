@@ -8,7 +8,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DataBase implements Serializable {
-     private static LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
+      private LinkedHashMap<Integer, Task> taskDB = new LinkedHashMap<>();
+    private static DataBase instance = new DataBase();
 
     public void getAllTask(){ // краткое описание задачи с ее номером
         for(Map.Entry<Integer, Task> allTask : taskDB.entrySet()){
@@ -17,6 +18,17 @@ public class DataBase implements Serializable {
     }
 
 
+
+    public static void setInstance(DataBase newInstance) { // для синглтона
+        instance = newInstance;
+    }
+
+    public static DataBase getInstance(){ // для синглтона
+        if(instance == null){
+            instance = new DataBase();
+        }
+        return instance;
+    }
 
 
     public void addTask(int id, Task task){ //добавляем задачу
@@ -40,20 +52,4 @@ public class DataBase implements Serializable {
     }
 }
 
-//
-    //private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
-    //    in.defaultReadObject();
-    //    LinkedHashMap<Integer, Task> loadedTaskDB = (LinkedHashMap<Integer, Task>) in.readObject();
-    //    taskDB = loadedTaskDB; // Восстанавливаем статическое поле
-//    }
-//
-//
-    //private void writeObject(ObjectOutputStream out) throws IOException {
-    //    out.defaultWriteObject();
-    //    out.writeObject(taskDB); // Сериализуем статическое поле
-//    }
-//
-    //public static LinkedHashMap<Integer, Task> getTaskDB() {
-    //    return taskDB;
- //   }
 

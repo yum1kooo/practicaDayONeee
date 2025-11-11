@@ -9,12 +9,11 @@ public class Main implements Serializable {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Person person = new Person("Кирилл");
-        DataBase db = new DataBase();
 
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("database.dat"))) {
             DataBase loaded = (DataBase) ois.readObject();
-            person.db = loaded;
+            DataBase.setInstance(loaded);
             System.out.println("База данных успешно загружена!");
         } catch (FileNotFoundException e) {
             System.out.println("База данных не найдена");
@@ -39,7 +38,7 @@ public class Main implements Serializable {
                     person.createNewTask();
                 }
                 case "2" -> {
-                    db.getAllTask();
+                    DataBase.getInstance().getAllTask();
                 }
                 case "3" -> {
                     person.changeTaskName();
@@ -59,7 +58,7 @@ public class Main implements Serializable {
                 }
                 case "0" -> {
                     try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("database.dat"))) {
-                        oos.writeObject(person.db);
+                        oos.writeObject(DataBase.getInstance());
                         System.out.println("База данных успешно сохранена!");
                     } catch (IOException e) {
                         System.out.println("Ошибка при сохранении базы данных: " + e.getMessage());

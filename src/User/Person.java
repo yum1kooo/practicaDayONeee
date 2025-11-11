@@ -12,8 +12,7 @@ public class Person implements Serializable {
     private String name;
 
     transient Scanner scanner = new Scanner(System.in);
-    DataBase db = new DataBase();
-    Task task = new Task("0", "0", "0");
+    DataBase db = DataBase.getInstance();
 
     public Person(String name) {
         this.name = name;
