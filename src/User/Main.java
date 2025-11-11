@@ -1,3 +1,7 @@
+package User;
+
+import Service.DataBase;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -34,7 +38,7 @@ public class Main implements Serializable {
                     person.createNewTask();
                 }
                 case "2" -> {
-                    person.db.getAllTask();
+                    db.getAllTask();
                 }
                 case "3" -> {
                     person.changeTaskName();
