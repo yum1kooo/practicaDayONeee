@@ -1,4 +1,4 @@
-package User;
+package org.example.User;
 
 import org.example.Service.DataBase;
 import org.example.Service.Task;
